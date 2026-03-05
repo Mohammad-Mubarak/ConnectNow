@@ -6,13 +6,14 @@ const { Server } = require('socket.io');
 const app  = express();
 app.use(express.json());
 
-const key  = fs.readFileSync('cert.key');
-const cert = fs.readFileSync('cert.crt');
+// const key  = fs.readFileSync('cert.key');
+// const cert = fs.readFileSync('cert.crt');
 
 const cors = require('cors') 
 
 
-const httpsServer = https.createServer({ key, cert }, app);
+// const httpsServer = https.createServer({ key, cert }, app);
+ const httpsServer = https.createServer(app);
 
 const io = new Server(httpsServer, {
   cors: {
@@ -195,4 +196,5 @@ httpsServer.listen(PORT, () => {
   console.log(`${C.green}${C.bold}  ✅  http://localhost:${PORT}${C.reset}`);
   console.log(`${C.cyan}${C.bold}  🩺  http://localhost:${PORT}/health${C.reset}`);
   console.log(`${C.green}${C.bold}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C.reset}\n`);
+
 });
