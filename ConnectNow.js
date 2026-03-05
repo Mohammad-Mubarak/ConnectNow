@@ -23,8 +23,7 @@ const io = new Server(httpsServer, {
   },
 });
 
-const PORT = 3001;
-
+const PORT = process.env.PORT || 3001;
 
 app.use(cors({
   origin: ['https://localhost:3000', 'http://localhost:3000'],
@@ -198,3 +197,4 @@ httpsServer.listen(PORT, () => {
   console.log(`${C.green}${C.bold}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C.reset}\n`);
 
 });
+
