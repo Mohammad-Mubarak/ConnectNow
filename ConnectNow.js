@@ -8,11 +8,7 @@ app.use(express.json());
 
 // ── CORS for Express REST routes
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://localhost:3000',
-    'https://connectnow-frontend.vercel.app', // ← replace with your actual Vercel URL
-  ],
+  origin:"*",
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -23,11 +19,7 @@ const httpServer = http.createServer(app);
 // ── Socket.IO
 const io = new Server(httpServer, {
   cors: {
-    origin: [
-      'http://localhost:3000',
-      'https://localhost:3000',
-      'https://connectnow-frontend.vercel.app', // ← replace with your actual Vercel URL
-    ],
+    origin:"*",
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -190,3 +182,4 @@ httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`${C.cyan}${C.bold}  🩺  http://localhost:${PORT}/health${C.reset}`);
   console.log(`${C.green}${C.bold}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C.reset}\n`);
 });
+
